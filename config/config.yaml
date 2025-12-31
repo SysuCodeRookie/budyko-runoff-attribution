@@ -1,0 +1,43 @@
+# 数据路径配置
+data:
+  grdc_dir: "data/raw/GRDC/"
+  isimip_dir: "data/raw/ISIMIP3a/"
+  huang_dir: "data/raw/WaterUse/"
+  basin_shp: "data/shapefiles/basins.shp"
+  output_dir: "data/processed/"
+
+# 分析参数
+parameters:
+  # 变化点年份
+  change_year: 1986
+  
+  # 时间段划分
+  base_period: [1960, 1985]
+  impact_period: [1986, 2016]
+  
+  # Budyko模型参数
+  n_bounds: [0.1, 10.0]  # 参数n的搜索范围
+  
+  # 数据质量控制
+  missing_threshold: 0.15  # 15%缺测阈值
+  min_valid_days: 300      # 每年最少有效观测天数
+
+# 质量检验阈值
+quality_checks:
+  min_runoff_ratio: 0.05   # 最小径流系数
+  max_runoff_ratio: 0.95   # 最大径流系数
+  min_delta_Q: 1.0         # 最小径流变化量(mm)，低于此值认为变化不显著
+  water_balance_tolerance: 0.1  # 水量平衡允许误差比例
+
+# 输出配置
+output:
+  results_dir: "data/results/"
+  figures_dir: "figures/"
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  save_intermediate: true  # 是否保存中间结果
+
+# 计算配置
+computation:
+  parallel: true           # 是否启用并行计算
+  n_workers: 4             # 并行工作进程数（null表示自动）
+  chunk_size: 50           # 数据分块大小

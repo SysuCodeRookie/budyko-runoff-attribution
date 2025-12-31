@@ -1,0 +1,158 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{url} % 用于处理网址
+\usepackage{hyperref} % 用于生成可点击的链接
+
+\begin{document}
+
+Attribution analysis using the Budyko method
+
+Based on the Budyko hypothesis, the analytical water-energy balance equation is derived at the mean annual time scale, which is expressed as:
+\begin{equation}
+    E = \frac{P \times PET}{(P^n + PET^n)^{\frac{1}{n}}}
+\end{equation}
+where $E$ is the mean annual actual evapotranspiration, $P$ is the mean annual precipitation, $PET$ is the mean annual potential evapotranspiration, which is calculated following the guidelines provided by the Food and Agriculture Organization, and the parameter n represents the basin landscape characteristics, which include properties of soil, topography, and vegetation.
+
+Assuming negligible changes in terrestrial water storage and combining the long-term basin water balance with equation (1), we obtain:
+\begin{equation}
+    Q_n = P - \frac{P \times PET}{(P^n + PET^n)^{\frac{1}{n}}}
+\end{equation}
+where $Q_n$ is the mean annual naturalized streamflow.
+
+Assuming P, PET, and n are independent variables and introducing the concept of elasticity, we obtain the following:
+
+\begin{equation}
+    \frac{dQ_n}{Q_n} = \varepsilon_P \frac{dP}{P} + \varepsilon_{PET} \frac{dPET}{PET} + \varepsilon_n \frac{dn}{n}
+\end{equation}
+
+\begin{equation}
+    \varepsilon_P = \frac{\frac{dQ_n}{Q_n}}{\frac{dP}{P}} = \frac{1 - \left[ \frac{\left(\frac{PET}{P}\right)^n}{1 + \left(\frac{PET}{P}\right)^n} \right]^{\frac{1}{n} + 1}}{1 - \left[ \frac{\left(\frac{PET}{P}\right)^n}{1 + \left(\frac{PET}{P}\right)^n} \right]^{\frac{1}{n}}}
+\end{equation}
+
+\begin{equation}
+    \varepsilon_{PET} = \frac{\frac{dQ_n}{Q_n}}{\frac{dPET}{PET}} = \frac{1}{1 + \left(\frac{PET}{P}\right)^n} \frac{1}{1 - \left[ \frac{1 + \left(\frac{PET}{P}\right)^n}{\left(\frac{PET}{P}\right)^n} \right]^{\frac{1}{n}}}
+\end{equation}
+
+\begin{equation}
+    \varepsilon_n = \frac{\frac{dQ_n}{Q_n}}{\frac{dn}{n}} = \frac{1}{\left[ 1 + \left( \frac{P}{PET} \right)^n \right]^{\frac{1}{n}} - 1} \left[ \frac{P^n \ln(P) + PET^n \ln(PET)}{P^n + PET^n} - \frac{\ln(P^n + PET^n)}{n} \right]
+\end{equation}
+
+where $\varepsilon_P$, $\varepsilon_{PET}$, and $\varepsilon_n$ represent P, PET, and n elasticity of streamflow, respectively.
+Based on equation (3), Budyko-simulated changes in naturalized streamflow ($\Delta \widehat{Q_n}$) can be attributed to the CCV-induced change ($\Delta Q_{n,CCV}$) and the LUCC-induced change ($\Delta Q_{n,LUCC}$):
+
+\begin{equation}
+    \Delta \widehat{Q_n} = \varepsilon_P \frac{Q_n}{P} \Delta P + \varepsilon_{PET} \frac{Q_n}{PET} \Delta PET + \varepsilon_n \frac{Q_n}{n} \Delta n
+\end{equation}
+
+where $\Delta$ represents the changes from the pre-1986 period to 1986 onwards. Based on equation (7), the contributions of CCV, LUCC, and WADR to changes in observed streamflow ($\Delta Q_o$), as calculated using the Budyko method, can be expressed as:
+
+\begin{align}
+    C_{CCV} &= \frac{\Delta Q_{n,CCV}}{\Delta Q_o} \times 100\% \\
+    C_{LUCC} &= \frac{\Delta Q_{n,LUCC}}{\Delta Q_o} \times 100\% \\
+    C_{WADR} &= \frac{\Delta Q_o - \Delta Q_n}{\Delta Q_o} \times 100\%
+\end{align}
+
+The Budyko attribution framework is applied through the following steps:
+
+\begin{itemize}
+    \item Step 1: input the 1960-2016 annual mean $P$, $PET$, and $Q_n$ into equation (2) to inversely calculate the parameter $n$ for each station.
+    
+    \item Step 2: input the 1960-2016 annual mean $P$, $PET$, and the parameter $n$ (obtained in Step 1) into equations (4-6) to calculate $\varepsilon_P$, $\varepsilon_{PET}$, and $\varepsilon_n$.
+    
+    \item Step 3: input the annual mean $P$, $PET$, and $Q_n$ for the pre-1986 period and from 1986 onwards into equation (2) to inversely calculate the parameter $n$ for each station in both periods.
+    
+    \item Step 4: input $\Delta P$, $\Delta PET$, and $\Delta n$ from the pre-1986 period to 1986 onwards, together with $Q_n$, $P$, $PET$, $n$, $\varepsilon_P$, $\varepsilon_{PET}$, and $\varepsilon_n$ in Steps 1 and 2, into the equation (7) to calculate $\Delta \widehat{Q_n}$, $\Delta Q_{n,CCV}$, and $\Delta Q_{n,LUCC}$.
+    
+    \item Step 5: input changes in observed ($\Delta Q_o$) and naturalized ($\Delta Q_n$) streamflow from the pre-1986 period to 1986 onwards, together with $\Delta Q_{n,CCV}$ and $\Delta Q_{n,LUCC}$ obtained in Step 4, into equations (8-10) to calculate contribution rates.
+
+    \item Step 6: use $\Delta \widehat{Q_n}$ obtained in Step 4 and $\Delta Q_n$ to plot fig. S5A. Since $Q_n$ is used in Step 1 to inversely calculate the parameter $n$ in the Budyko model (serving as model calibration), the Budyko-simulated naturalized streamflow exhibits perfect agreement and correlation. This confirms that the Budyko framework effectively quantifies the relationships between $P$, $PET$, and $Q_n$.
+\end{itemize}
+
+ISIMIP3a,
+
+The observation-based forcings used in these models are specified as ``obsclim'' and ``histsoc.''
+
+\begin{enumerate}
+    \item[1)] ``obsclim'' refers to observation-based climate-related forcings, consisting of standard atmospheric forcings. ISIMIP3a uses four atmospheric forcings---GSWP3-W5E5, 20CRv3, 20CRv3-W5E5, and 20CRv3-ERA5---each of which is used separately to drive the GHMs.
+    
+    \item[2)] ``histsoc'' represents varying direct human influences during the historical period, including LUCC, variable human water abstraction, and simplified reservoir regulation.
+\end{enumerate}
+
+To isolate and identify the contributions of different drivers to streamflow changes, ISIMIP3a transforms observation-based forcings and uses these transformations to rerun the GHMs. The transformations used in this study are ``counterclim'' and ``1901soc''.
+
+\begin{enumerate}
+    \item[3)] ``counterclim'' refers to a hypothetical counterfactual climate condition in the absence of observed climate change. This condition is derived by detrending four atmospheric forcings using ATTRICI version 1.1, which removes global mean temperature--related shifts in each grid.
+    
+    \item[4)] ``1901soc'' represents direct human influences that remain constant over time, maintaining land use, human water abstraction, and reservoir conditions identical to those in 1901.
+\end{enumerate}
+
+On the basis of the information outlined above, $Q_o$ is reconstructed using GHMs forced by ``obsclim + histsoc'' (denoted as $Q'_o$), and $Q_n$ is reconstructed using GHMs forced by ``obsclim + 1901soc'' (denoted as $Q'_n$). In addition, GHMs forced by ``counterclim + 1901soc'' (denoted as $Q'_{cn}$) are used to distinguish the influence of climate change from climate variability. According to the GHMs participating in ISIMIP3a, as listed in data S2, we downloaded $Q'_o$, $Q'_n$, and $Q'_{cn}$ from nine ISIMIP3a outputs.
+
+The contributions of CCV, LUCC, and WADR to the change in $Q_o$ denoted as $C_{CCV}, C_{LUCC}$, and $C_{WADR}$, can be calculated as
+
+\begin{align*}
+    C_{CCV} &= \frac{\Delta Q'_n}{\Delta Q_o} \times 100 \\
+    C_{LUCC} &= \frac{\Delta Q_n - \Delta Q'_n}{\Delta Q_o} \times 100 \\
+    C_{WADR} &= \frac{\Delta Q_o - \Delta Q_n}{\Delta Q_o} \times 100
+\end{align*}
+
+$C_{CCV}$ can be further divided into the contributions of ACC and NCV, namely $C_{ACC}$ and $C_{NCV}$, as follows
+
+\begin{align*}
+    C_{ACC} &= \frac{\Delta Q'_n - \Delta Q'_{cn}}{\Delta Q_o} \times 100 \\
+    C_{ACC} &= \frac{\Delta Q'_{cn}}{\Delta Q_o} \times 100
+\end{align*}
+
+ISIMIP2a, NOSOC, VARSOC experiment
+
+\section*{Data Sources}
+
+\begin{itemize}
+    \item \textbf{Observed streamflow data}: Global Runoff Data Center (GRDC, \url{https://portal.grdc.bafg.de/applications/public.html?publicuser=PublicUser#dataDownload/Home})
+    
+    \item \textbf{Water consumption data}: Data of different sectors---irrigation, livestock, electricity generation, domestic, mining and manufacturing from 1970--2010 (\url{https://doi.org/10.5281/zenodo.1209296})
+    
+    \item \textbf{Future climate projections}: \url{https://www.isimip.org/}
+\end{itemize}
+
+\renewcommand\refname{References} % 重命名参考文献标题（如果需要）
+\begin{thebibliography}{99}
+
+\bibitem{Rosa2025}
+Rosa L, Sangiorgio M. 
+Global water gaps under future warming levels[J]. 
+\textit{Nature Communications}, 2025, 16(1): 1192.
+
+\bibitem{Deng2025}
+Deng Q, Sharretts T, Ali T, et al. 
+Deepening water scarcity in breadbasket nations[J]. 
+\textit{Nature Communications}, 2025, 16(1): 1110.
+
+\bibitem{Wang2025}
+Wang K, Liu X, Cui P, et al. 
+China’s nationwide streamflow decline driven by landscape changes and human interventions[J]. 
+\textit{Science Advances}, 2025, 11(32): eadu8032.
+
+\bibitem{Liu2019}
+Liu X, Liu W, Yang H, et al. 
+Multimodel assessments of human and climate impacts on mean annual streamflow in China[J]. 
+\textit{Hydrology and Earth System Sciences}, 2019, 23(3): 1245--1261.
+
+\bibitem{Huang2021}
+Huang Z, Yuan X, Liu X. 
+The key drivers for the changes in global water scarcity: Water withdrawal versus water availability[J]. 
+\textit{Journal of Hydrology}, 2021, 601: 126658.
+
+\bibitem{He2023}
+He S, Chen K, Liu Z, et al. 
+Exploring the impacts of climate change and human activities on future runoff variations at the seasonal scale[J]. 
+\textit{Journal of Hydrology}, 2023, 619: 129382.
+
+\bibitem{Liu2025}
+Liu W, Fu Z, van Vliet M T H, et al. 
+Global overlooked multidimensional water scarcity[J]. 
+\textit{Proceedings of the National Academy of Sciences}, 2025, 122(26): e2413541122.
+
+\end{thebibliography}
+
+\end{document}

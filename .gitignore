@@ -1,0 +1,84 @@
+# 字节编译的Python文件
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# 分发/打包
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 虚拟环境
+venv/
+ENV/
+env/
+.venv
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# 测试覆盖率
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+
+# 数据文件（不纳入版本控制）
+data/raw/
+data/processed/
+data/results/
+*.nc
+*.txt
+*.dat
+*.csv
+*.shp
+*.shx
+*.dbf
+*.prj
+
+# 日志文件
+*.log
+
+# 临时文件
+*.tmp
+*.bak
+*.swp
+*~
+
+# 图片输出（可选择性忽略）
+figures/*.png
+figures/*.jpg
+figures/*.pdf
+
+# 操作系统
+.DS_Store
+Thumbs.db
+
+# 模型输出
+models/
+checkpoints/
